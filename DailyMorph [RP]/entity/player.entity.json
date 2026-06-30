@@ -1,0 +1,108 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "minecraft:player",
+      "materials": {
+        "default": "entity_alphatest",
+        "cape": "entity_alphatest",
+        "animated": "player_animated"
+      },
+      "textures": {
+        "default": "textures/entity/player/steve",
+        "dm_zombie": "textures/entity/zombie/zombie",
+        "dm_skeleton": "textures/entity/skeleton/skeleton",
+        "dm_creeper": "textures/entity/creeper/creeper",
+        "dm_spider": "textures/entity/spider/spider",
+        "dm_enderman": "textures/entity/enderman/enderman",
+        "dm_witch": "textures/entity/witch/witch",
+        "dm_blaze": "textures/entity/blaze/blaze",
+        "dm_ghast": "textures/entity/ghast/ghast",
+        "dm_magma": "textures/entity/magma_cube/magma_cube",
+        "dm_silverfish": "textures/entity/silverfish/silverfish",
+        "dm_slime": "textures/entity/slime/slime",
+        "dm_drowned": "textures/entity/zombie/drowned",
+        "dm_husk": "textures/entity/zombie/husk",
+        "dm_stray": "textures/entity/skeleton/stray",
+        "dm_phantom": "textures/entity/phantom/phantom",
+        "dm_pillager": "textures/entity/pillager/pillager",
+        "dm_evoker": "textures/entity/evoker/evoker",
+        "dm_vindicator": "textures/entity/vindicator/vindicator",
+        "dm_ravager": "textures/entity/ravager/ravager",
+        "dm_vex": "textures/entity/vex/vex",
+        "dm_guardian": "textures/entity/guardian/guardian",
+        "dm_elder": "textures/entity/guardian/elder_guardian",
+        "dm_shulker": "textures/entity/shulker/shulker",
+        "dm_wither": "textures/entity/wither/wither",
+        "dm_wither_skeleton": "textures/entity/skeleton/wither_skeleton",
+        "dm_zoglin": "textures/entity/hoglin/zoglin",
+        "dm_piglin_brute": "textures/entity/piglin/piglin_brute",
+        "dm_hoglin": "textures/entity/hoglin/hoglin",
+        "dm_warden": "textures/entity/warden/warden",
+        "dm_dragon": "textures/entity/enderdragon/dragon",
+        "dm_chicken": "textures/entity/chicken/chicken",
+        "dm_cow": "textures/entity/cow/cow",
+        "dm_pig": "textures/entity/pig/pig",
+        "dm_sheep": "textures/entity/sheep/sheep",
+        "dm_rabbit": "textures/entity/rabbit/rabbit",
+        "dm_horse": "textures/entity/horse/horse",
+        "dm_donkey": "textures/entity/horse/donkey",
+        "dm_mule": "textures/entity/horse/mule",
+        "dm_skeleton_horse": "textures/entity/horse/horse_skeleton",
+        "dm_cat": "textures/entity/cat/blackcat",
+        "dm_ocelot": "textures/entity/ocelot/ocelot",
+        "dm_parrot": "textures/entity/parrot/parrot",
+        "dm_turtle": "textures/entity/turtle/turtle",
+        "dm_squid": "textures/entity/squid/squid",
+        "dm_glow_squid": "textures/entity/squid/glow_squid",
+        "dm_dolphin": "textures/entity/dolphin/dolphin",
+        "dm_fish": "textures/entity/fish/cod",
+        "dm_pufferfish": "textures/entity/fish/pufferfish",
+        "dm_tropical": "textures/entity/fish/tropical_a",
+        "dm_axolotl": "textures/entity/axolotl/axolotl",
+        "dm_frog": "textures/entity/frog/temperate_frog",
+        "dm_tadpole": "textures/entity/tadpole/tadpole",
+        "dm_sniffer": "textures/entity/sniffer/sniffer",
+        "dm_armadillo": "textures/entity/armadillo/armadillo",
+        "dm_camel": "textures/entity/camel/camel",
+        "dm_allay": "textures/entity/allay/allay",
+        "dm_goat": "textures/entity/goat/goat",
+        "dm_panda": "textures/entity/panda/panda",
+        "dm_llama": "textures/entity/llama/llama",
+        "dm_wolf": "textures/entity/wolf/wolf",
+        "dm_bee": "textures/entity/bee/bee",
+        "dm_fox": "textures/entity/fox/fox",
+        "dm_polar_bear": "textures/entity/polar_bear/polar_bear",
+        "dm_piglin": "textures/entity/piglin/piglin",
+        "dm_zombie_piglin": "textures/entity/piglin/zombie_piglin",
+        "dm_mooshroom": "textures/entity/cow/red_mooshroom",
+        "dm_strider": "textures/entity/strider/strider",
+        "dm_trader": "textures/entity/wandering_trader/wandering_trader",
+        "dm_villager": "textures/entity/villager/villager",
+        "dm_iron_golem": "textures/entity/iron_golem/iron_golem",
+        "dm_snow_golem": "textures/entity/snow_golem/snow_golem"
+      },
+      "geometry": {
+        "default": "geometry.humanoid.custom"
+      },
+      "scripts": {
+        "scale": "1.0",
+        "initialize": ["variable.is_morph_active = 0;"],
+        "pre_animation": [
+          "variable.is_morph_active = q.property('dm:current_morph') > 0 ? 1 : 0;",
+          "variable.morph_scale = q.property('dm:current_morph') == 91 ? 2.0 : (q.property('dm:current_morph') == 92 ? 1.5 : (q.property('dm:current_morph') == 93 ? 3.0 : (q.property('dm:current_morph') >= 105 ? 1.4 : 1.0)));"
+        ]
+      },
+      "animations": {
+        "general": "animation.player.general",
+        "look_at_target": "animation.player.look_at_target",
+        "cape": "animation.player.cape"
+      },
+      "animation_controllers": [
+        { "general": "controller.animation.player.general" }
+      ],
+      "render_controllers": ["controller.render.player.morph"],
+      "enable_attachables": true
+    }
+  }
+}

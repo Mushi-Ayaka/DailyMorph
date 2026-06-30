@@ -1,0 +1,42 @@
+{
+  "format_version": 2,
+  "header": {
+    "name": "Daily Morph",
+    "description": "Transformate en un mob aleatorio cada dia de Minecraft. By MushiAyaka",
+    "uuid": "59e2f94b-cad9-4db1-817d-1770f537af51",
+    "version": [1, 0, 0],
+    "min_engine_version": [1, 21, 44]
+  },
+  "modules": [
+    {
+      "type": "data",
+      "uuid": "1c81d4b0-dd79-438e-9030-485ec0cec187",
+      "version": [1, 0, 0]
+    },
+    {
+      "type": "script",
+      "language": "javascript",
+      "uuid": "c0794a0c-1b23-4089-9990-6676dc5e1203",
+      "version": [1, 0, 0],
+      "entry": "scripts/main.js"
+    }
+  ],
+  "dependencies": [
+    {
+      "uuid": "fa2b38b1-e1d3-48be-b215-47f1836aa1b6",
+      "version": [1, 0, 0]
+    },
+    {
+      "module_name": "@minecraft/server",
+      "version": "1.14.0"
+    },
+    {
+      "module_name": "@minecraft/server-ui",
+      "version": "1.3.0"
+    }
+  ],
+  "capabilities": ["script_eval"],
+  "metadata": {
+    "authors": ["MushiAyaka"]
+  }
+}

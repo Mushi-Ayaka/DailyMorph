@@ -1,0 +1,17 @@
+{
+  "format_version": 2,
+  "header": {
+    "name": "Daily Morph Resources",
+    "description": "Recursos visuales para Daily Morph. By MushiAyaka",
+    "uuid": "fa2b38b1-e1d3-48be-b215-47f1836aa1b6",
+    "version": [1, 0, 0],
+    "min_engine_version": [1, 21, 44]
+  },
+  "modules": [
+    {
+      "type": "resources",
+      "uuid": "e55488ba-200e-44f0-81e8-16ae149755e4",
+      "version": [1, 0, 0]
+    }
+  ]
+}

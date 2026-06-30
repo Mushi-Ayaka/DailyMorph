@@ -1,0 +1,946 @@
+{
+  "format_version": "1.21.0",
+  "minecraft:entity": {
+    "description": {
+      "identifier": "minecraft:player",
+      "is_spawnable": false,
+      "is_summonable": false,
+      "is_experimental": false,
+      "properties": {
+        "dm:current_morph": {
+          "type": "int",
+          "range": [-1, 106],
+          "default": -1,
+          "client_sync": true
+        }
+      }
+    },
+    "component_groups": {
+      "dm:human": {
+        "minecraft:type_family": { "family": ["player"] },
+        "minecraft:collision_box": { "width": 0.6, "height": 1.8 },
+        "minecraft:movement": { "value": 0.1 },
+        "minecraft:health": { "value": 20, "max": 20 },
+        "minecraft:attack": { "damage": 1 },
+        "minecraft:breathable": { "total_supply": 15, "suffocate_time": -1, "inhale_time": 3.75, "generates_bubbles": false }
+      },
+      "dm:1": {
+        "minecraft:type_family": { "family": ["zombie", "undead", "monster", "mob", "morphed"] },
+        "minecraft:collision_box": { "width": 0.6, "height": 1.9 },
+        "minecraft:health": { "value": 20, "max": 20 },
+        "minecraft:movement": { "value": 0.1 },
+        "minecraft:attack": { "damage": 3 },
+        "minecraft:burns_in_daylight": {},
+        "minecraft:breathable": { "total_supply": 15, "suffocate_time": 0 }
+      },
+      "dm:2": {
+        "minecraft:type_family": { "family": ["skeleton", "undead", "monster", "mob", "morphed"] },
+        "minecraft:collision_box": { "width": 0.6, "height": 1.9 },
+        "minecraft:health": { "value": 20, "max": 20 },
+        "minecraft:movement": { "value": 0.1 },
+        "minecraft:attack": { "damage": 2 },
+        "minecraft:burns_in_daylight": {},
+        "minecraft:breathable": { "total_supply": 15, "suffocate_time": 0, "breathes_water": true }
+      },
+      "dm:3": {
+        "minecraft:type_family": { "family": ["creeper", "monster", "mob", "morphed"] },
+        "minecraft:collision_box": { "width": 0.6, "height": 1.8 },
+        "minecraft:health": { "value": 20, "max": 20 },
+        "minecraft:movement": { "value": 0.1 },
+        "minecraft:attack": { "damage": 3 }
+      },
+      "dm:4": {
+        "minecraft:type_family": { "family": ["spider", "arthropod", "monster", "mob", "morphed"] },
+        "minecraft:collision_box": { "width": 1.4, "height": 0.9 },
+        "minecraft:health": { "value": 16, "max": 16 },
+        "minecraft:movement": { "value": 0.15 },
+        "minecraft:attack": { "damage": 2 }
+      },
+      "dm:5": {
+        "minecraft:type_family": { "family": ["spider", "arthropod", "monster", "mob", "morphed"] },
+        "minecraft:collision_box": { "width": 0.7, "height": 0.5 },
+        "minecraft:health": { "value": 12, "max": 12 },
+        "minecraft:movement": { "value": 0.15 },
+        "minecraft:attack": { "damage": 2 }
+      },
+      "dm:6": {
+        "minecraft:type_family": { "family": ["enderman", "monster", "mob", "morphed"] },
+        "minecraft:collision_box": { "width": 0.6, "height": 2.9 },
+        "minecraft:health": { "value": 40, "max": 40 },
+        "minecraft:movement": { "value": 0.15 },
+        "minecraft:attack": { "damage": 7 },
+        "minecraft:breathable": { "total_supply": 15, "suffocate_time": 0 }
+      },
+      "dm:7": {
+        "minecraft:type_family": { "family": ["witch", "monster", "mob", "morphed"] },
+        "minecraft:collision_box": { "width": 0.6, "height": 1.9 },
+        "minecraft:health": { "value": 26, "max": 26 },
+        "minecraft:movement": { "value": 0.1 },
+        "minecraft:attack": { "damage": 1 }
+      },
+      "dm:8": {
+        "minecraft:type_family": { "family": ["blaze", "monster", "mob", "morphed"] },
+        "minecraft:collision_box": { "width": 0.6, "height": 1.8 },
+        "minecraft:health": { "value": 20, "max": 20 },
+        "minecraft:movement": { "value": 0.1 },
+        "minecraft:attack": { "damage": 6 },
+        "minecraft:damage_sensor": { "triggers": [{ "cause": "fire", "deals_damage": false }, { "cause": "fire_tick", "deals_damage": false }, { "cause": "lava", "deals_damage": false }] }
+      },
+      "dm:9": {
+        "minecraft:type_family": { "family": ["ghast", "monster", "mob", "morphed"] },
+        "minecraft:collision_box": { "width": 4.0, "height": 4.0 },
+        "minecraft:health": { "value": 10, "max": 10 },
+        "minecraft:movement": { "value": 0.08 },
+        "minecraft:attack": { "damage": 0 }
+      },
+      "dm:10": {
+        "minecraft:type_family": { "family": ["magma_cube", "monster", "mob", "morphed"] },
+        "minecraft:collision_box": { "width": 0.6, "height": 0.6 },
+        "minecraft:health": { "value": 16, "max": 16 },
+        "minecraft:movement": { "value": 0.1 },
+        "minecraft:attack": { "damage": 6 },
+        "minecraft:damage_sensor": { "triggers": [{ "cause": "fire", "deals_damage": false }, { "cause": "fire_tick", "deals_damage": false }, { "cause": "lava", "deals_damage": false }] }
+      },
+      "dm:11": {
+        "minecraft:type_family": { "family": ["silverfish", "monster", "mob", "morphed"] },
+        "minecraft:collision_box": { "width": 0.4, "height": 0.3 },
+        "minecraft:health": { "value": 8, "max": 8 },
+        "minecraft:movement": { "value": 0.1 },
+        "minecraft:attack": { "damage": 1 }
+      },
+      "dm:12": {
+        "minecraft:type_family": { "family": ["slime", "monster", "mob", "morphed"] },
+        "minecraft:collision_box": { "width": 0.6, "height": 0.6 },
+        "minecraft:health": { "value": 16, "max": 16 },
+        "minecraft:movement": { "value": 0.1 },
+        "minecraft:attack": { "damage": 4 }
+      },
+      "dm:13": {
+        "minecraft:type_family": { "family": ["zombie", "undead", "monster", "mob", "morphed"] },
+        "minecraft:collision_box": { "width": 0.6, "height": 1.9 },
+        "minecraft:health": { "value": 20, "max": 20 },
+        "minecraft:movement": { "value": 0.1 },
+        "minecraft:attack": { "damage": 3 },
+        "minecraft:breathable": { "total_supply": 30, "suffocate_time": -1.5, "inhale_time": 3.75, "breathes_water": true },
+        "minecraft:damage_sensor": { "triggers": [{ "cause": "drowning", "deals_damage": false }] }
+      },
+      "dm:14": {
+        "minecraft:type_family": { "family": ["zombie", "undead", "monster", "mob", "morphed"] },
+        "minecraft:collision_box": { "width": 0.6, "height": 1.9 },
+        "minecraft:health": { "value": 20, "max": 20 },
+        "minecraft:movement": { "value": 0.1 },
+        "minecraft:attack": { "damage": 3 },
+        "minecraft:burns_in_daylight": {}
+      },
+      "dm:15": {
+        "minecraft:type_family": { "family": ["skeleton", "undead", "monster", "mob", "morphed"] },
+        "minecraft:collision_box": { "width": 0.6, "height": 1.9 },
+        "minecraft:health": { "value": 20, "max": 20 },
+        "minecraft:movement": { "value": 0.1 },
+        "minecraft:attack": { "damage": 2 },
+        "minecraft:damage_sensor": { "triggers": [{ "cause": "freezing", "deals_damage": false }] }
+      },
+      "dm:16": {
+        "minecraft:type_family": { "family": ["skeleton", "undead", "monster", "mob", "morphed"] },
+        "minecraft:collision_box": { "width": 0.6, "height": 1.9 },
+        "minecraft:health": { "value": 16, "max": 16 },
+        "minecraft:movement": { "value": 0.1 },
+        "minecraft:attack": { "damage": 2 },
+        "minecraft:breathable": { "total_supply": 15, "suffocate_time": 0, "breathes_water": true }
+      },
+      "dm:17": {
+        "minecraft:type_family": { "family": ["phantom", "undead", "monster", "mob", "morphed"] },
+        "minecraft:collision_box": { "width": 0.9, "height": 0.5 },
+        "minecraft:health": { "value": 20, "max": 20 },
+        "minecraft:movement": { "value": 0.1 },
+        "minecraft:attack": { "damage": 2 }
+      },
+      "dm:18": {
+        "minecraft:type_family": { "family": ["pillager", "monster", "mob", "morphed"] },
+        "minecraft:collision_box": { "width": 0.6, "height": 1.9 },
+        "minecraft:health": { "value": 24, "max": 24 },
+        "minecraft:movement": { "value": 0.1 },
+        "minecraft:attack": { "damage": 2 }
+      },
+      "dm:19": {
+        "minecraft:type_family": { "family": ["evoker", "monster", "mob", "morphed"] },
+        "minecraft:collision_box": { "width": 0.6, "height": 1.9 },
+        "minecraft:health": { "value": 24, "max": 24 },
+        "minecraft:movement": { "value": 0.1 },
+        "minecraft:attack": { "damage": 1 }
+      },
+      "dm:20": {
+        "minecraft:type_family": { "family": ["vindicator", "monster", "mob", "morphed"] },
+        "minecraft:collision_box": { "width": 0.6, "height": 1.9 },
+        "minecraft:health": { "value": 24, "max": 24 },
+        "minecraft:movement": { "value": 0.1 },
+        "minecraft:attack": { "damage": 7 }
+      },
+      "dm:21": {
+        "minecraft:type_family": { "family": ["ravager", "monster", "mob", "morphed"] },
+        "minecraft:collision_box": { "width": 1.9, "height": 2.2 },
+        "minecraft:health": { "value": 100, "max": 100 },
+        "minecraft:movement": { "value": 0.1 },
+        "minecraft:attack": { "damage": 12 }
+      },
+      "dm:22": {
+        "minecraft:type_family": { "family": ["vex", "monster", "mob", "morphed"] },
+        "minecraft:collision_box": { "width": 0.4, "height": 0.8 },
+        "minecraft:health": { "value": 14, "max": 14 },
+        "minecraft:movement": { "value": 0.1 },
+        "minecraft:attack": { "damage": 5 }
+      },
+      "dm:23": {
+        "minecraft:type_family": { "family": ["guardian", "monster", "mob", "morphed"] },
+        "minecraft:collision_box": { "width": 0.85, "height": 0.85 },
+        "minecraft:health": { "value": 30, "max": 30 },
+        "minecraft:movement": { "value": 0.1 },
+        "minecraft:attack": { "damage": 6 },
+        "minecraft:breathable": { "total_supply": 15, "suffocate_time": 0, "breathes_water": true }
+      },
+      "dm:24": {
+        "minecraft:type_family": { "family": ["guardian", "elder_guardian", "monster", "mob", "morphed"] },
+        "minecraft:collision_box": { "width": 1.9, "height": 1.9 },
+        "minecraft:health": { "value": 80, "max": 80 },
+        "minecraft:movement": { "value": 0.1 },
+        "minecraft:attack": { "damage": 8 },
+        "minecraft:breathable": { "total_supply": 15, "suffocate_time": 0, "breathes_water": true }
+      },
+      "dm:25": {
+        "minecraft:type_family": { "family": ["shulker", "monster", "mob", "morphed"] },
+        "minecraft:collision_box": { "width": 1.0, "height": 1.0 },
+        "minecraft:health": { "value": 30, "max": 30 },
+        "minecraft:movement": { "value": 0.0 },
+        "minecraft:attack": { "damage": 1 },
+        "minecraft:breathable": { "total_supply": 15, "suffocate_time": 0 }
+      },
+      "dm:26": {
+        "minecraft:type_family": { "family": ["skeleton", "wither_skeleton", "undead", "monster", "mob", "morphed"] },
+        "minecraft:collision_box": { "width": 0.7, "height": 2.4 },
+        "minecraft:health": { "value": 20, "max": 20 },
+        "minecraft:movement": { "value": 0.1 },
+        "minecraft:attack": { "damage": 4 },
+        "minecraft:damage_sensor": { "triggers": [{ "cause": "fire", "deals_damage": false }, { "cause": "fire_tick", "deals_damage": false }, { "cause": "lava", "deals_damage": false }] }
+      },
+      "dm:27": {
+        "minecraft:type_family": { "family": ["zoglin", "undead", "monster", "mob", "morphed"] },
+        "minecraft:collision_box": { "width": 0.9, "height": 0.9 },
+        "minecraft:health": { "value": 40, "max": 40 },
+        "minecraft:movement": { "value": 0.15 },
+        "minecraft:attack": { "damage": 6 }
+      },
+      "dm:28": {
+        "minecraft:type_family": { "family": ["piglin_brute", "monster", "mob", "morphed"] },
+        "minecraft:collision_box": { "width": 0.6, "height": 1.9 },
+        "minecraft:health": { "value": 50, "max": 50 },
+        "minecraft:movement": { "value": 0.1 },
+        "minecraft:attack": { "damage": 7 },
+        "minecraft:damage_sensor": { "triggers": [{ "cause": "fire", "deals_damage": false }, { "cause": "fire_tick", "deals_damage": false }] }
+      },
+      "dm:29": {
+        "minecraft:type_family": { "family": ["hoglin", "monster", "mob", "morphed"] },
+        "minecraft:collision_box": { "width": 0.9, "height": 0.9 },
+        "minecraft:health": { "value": 40, "max": 40 },
+        "minecraft:movement": { "value": 0.1 },
+        "minecraft:attack": { "damage": 6 }
+      },
+      "dm:30": {
+        "minecraft:type_family": { "family": ["breeze", "monster", "mob", "morphed"] },
+        "minecraft:collision_box": { "width": 0.6, "height": 1.9 },
+        "minecraft:health": { "value": 30, "max": 30 },
+        "minecraft:movement": { "value": 0.1 },
+        "minecraft:attack": { "damage": 2 }
+      },
+      "dm:31": {
+        "minecraft:type_family": { "family": ["creaking", "monster", "mob", "morphed"] },
+        "minecraft:collision_box": { "width": 0.6, "height": 2.9 },
+        "minecraft:health": { "value": 40, "max": 40 },
+        "minecraft:movement": { "value": 0.1 },
+        "minecraft:attack": { "damage": 6 }
+      },
+      "dm:32": {
+        "minecraft:type_family": { "family": ["chicken", "mob", "morphed"] },
+        "minecraft:collision_box": { "width": 0.6, "height": 0.8 },
+        "minecraft:health": { "value": 4, "max": 4 },
+        "minecraft:movement": { "value": 0.1 },
+        "minecraft:attack": { "damage": 1 },
+        "minecraft:damage_sensor": { "triggers": { "on_damage": { "filters": { "test": "has_damage", "subject": "self", "operator": "equals", "value": "fall" } }, "deals_damage": false } }
+      },
+      "dm:33": {
+        "minecraft:type_family": { "family": ["cow", "mob", "morphed"] },
+        "minecraft:collision_box": { "width": 0.9, "height": 1.3 },
+        "minecraft:health": { "value": 10, "max": 10 },
+        "minecraft:movement": { "value": 0.1 },
+        "minecraft:attack": { "damage": 1 }
+      },
+      "dm:34": {
+        "minecraft:type_family": { "family": ["pig", "mob", "morphed"] },
+        "minecraft:collision_box": { "width": 0.9, "height": 0.9 },
+        "minecraft:health": { "value": 10, "max": 10 },
+        "minecraft:movement": { "value": 0.1 },
+        "minecraft:attack": { "damage": 1 }
+      },
+      "dm:35": {
+        "minecraft:type_family": { "family": ["sheep", "mob", "morphed"] },
+        "minecraft:collision_box": { "width": 0.9, "height": 1.3 },
+        "minecraft:health": { "value": 8, "max": 8 },
+        "minecraft:movement": { "value": 0.1 },
+        "minecraft:attack": { "damage": 1 }
+      },
+      "dm:36": {
+        "minecraft:type_family": { "family": ["sheep", "mob", "morphed"] },
+        "minecraft:collision_box": { "width": 0.9, "height": 1.3 },
+        "minecraft:health": { "value": 8, "max": 8 },
+        "minecraft:movement": { "value": 0.1 },
+        "minecraft:attack": { "damage": 1 },
+        "minecraft:color": { "value": 15 }
+      },
+      "dm:37": {
+        "minecraft:type_family": { "family": ["sheep", "mob", "morphed"] },
+        "minecraft:collision_box": { "width": 0.9, "height": 1.3 },
+        "minecraft:health": { "value": 8, "max": 8 },
+        "minecraft:movement": { "value": 0.1 },
+        "minecraft:attack": { "damage": 1 },
+        "minecraft:color": { "value": 12 }
+      },
+      "dm:38": {
+        "minecraft:type_family": { "family": ["rabbit", "mob", "morphed"] },
+        "minecraft:collision_box": { "width": 0.4, "height": 0.5 },
+        "minecraft:health": { "value": 3, "max": 3 },
+        "minecraft:movement": { "value": 0.15 },
+        "minecraft:attack": { "damage": 1 }
+      },
+      "dm:39": {
+        "minecraft:type_family": { "family": ["rabbit", "mob", "morphed"] },
+        "minecraft:collision_box": { "width": 0.4, "height": 0.5 },
+        "minecraft:health": { "value": 3, "max": 3 },
+        "minecraft:movement": { "value": 0.15 },
+        "minecraft:attack": { "damage": 1 }
+      },
+      "dm:40": {
+        "minecraft:type_family": { "family": ["rabbit", "mob", "morphed"] },
+        "minecraft:collision_box": { "width": 0.4, "height": 0.5 },
+        "minecraft:health": { "value": 3, "max": 3 },
+        "minecraft:movement": { "value": 0.15 },
+        "minecraft:attack": { "damage": 1 }
+      },
+      "dm:41": {
+        "minecraft:type_family": { "family": ["horse", "mob", "morphed"] },
+        "minecraft:collision_box": { "width": 1.4, "height": 1.6 },
+        "minecraft:health": { "value": 15, "max": 15 },
+        "minecraft:movement": { "value": 0.15 },
+        "minecraft:attack": { "damage": 1 }
+      },
+      "dm:42": {
+        "minecraft:type_family": { "family": ["horse", "mob", "morphed"] },
+        "minecraft:collision_box": { "width": 1.4, "height": 1.6 },
+        "minecraft:health": { "value": 15, "max": 15 },
+        "minecraft:movement": { "value": 0.15 },
+        "minecraft:attack": { "damage": 1 }
+      },
+      "dm:43": {
+        "minecraft:type_family": { "family": ["horse", "mob", "morphed"] },
+        "minecraft:collision_box": { "width": 1.4, "height": 1.6 },
+        "minecraft:health": { "value": 15, "max": 15 },
+        "minecraft:movement": { "value": 0.15 },
+        "minecraft:attack": { "damage": 1 }
+      },
+      "dm:44": {
+        "minecraft:type_family": { "family": ["donkey", "mob", "morphed"] },
+        "minecraft:collision_box": { "width": 1.4, "height": 1.6 },
+        "minecraft:health": { "value": 15, "max": 15 },
+        "minecraft:movement": { "value": 0.13 },
+        "minecraft:attack": { "damage": 1 }
+      },
+      "dm:45": {
+        "minecraft:type_family": { "family": ["mule", "mob", "morphed"] },
+        "minecraft:collision_box": { "width": 1.4, "height": 1.6 },
+        "minecraft:health": { "value": 15, "max": 15 },
+        "minecraft:movement": { "value": 0.13 },
+        "minecraft:attack": { "damage": 1 }
+      },
+      "dm:46": {
+        "minecraft:type_family": { "family": ["skeleton_horse", "undead", "mob", "morphed"] },
+        "minecraft:collision_box": { "width": 1.4, "height": 1.6 },
+        "minecraft:health": { "value": 15, "max": 15 },
+        "minecraft:movement": { "value": 0.15 },
+        "minecraft:attack": { "damage": 1 }
+      },
+      "dm:47": {
+        "minecraft:type_family": { "family": ["zombie_horse", "undead", "mob", "morphed"] },
+        "minecraft:collision_box": { "width": 1.4, "height": 1.6 },
+        "minecraft:health": { "value": 15, "max": 15 },
+        "minecraft:movement": { "value": 0.1 },
+        "minecraft:attack": { "damage": 1 }
+      },
+      "dm:48": {
+        "minecraft:type_family": { "family": ["cat", "mob", "morphed"] },
+        "minecraft:collision_box": { "width": 0.6, "height": 0.7 },
+        "minecraft:health": { "value": 10, "max": 10 },
+        "minecraft:movement": { "value": 0.1 },
+        "minecraft:attack": { "damage": 1 }
+      },
+      "dm:49": {
+        "minecraft:type_family": { "family": ["cat", "mob", "morphed"] },
+        "minecraft:collision_box": { "width": 0.6, "height": 0.7 },
+        "minecraft:health": { "value": 10, "max": 10 },
+        "minecraft:movement": { "value": 0.1 },
+        "minecraft:attack": { "damage": 1 }
+      },
+      "dm:50": {
+        "minecraft:type_family": { "family": ["cat", "mob", "morphed"] },
+        "minecraft:collision_box": { "width": 0.6, "height": 0.7 },
+        "minecraft:health": { "value": 10, "max": 10 },
+        "minecraft:movement": { "value": 0.1 },
+        "minecraft:attack": { "damage": 1 }
+      },
+      "dm:51": {
+        "minecraft:type_family": { "family": ["ocelot", "mob", "morphed"] },
+        "minecraft:collision_box": { "width": 0.6, "height": 0.7 },
+        "minecraft:health": { "value": 10, "max": 10 },
+        "minecraft:movement": { "value": 0.12 },
+        "minecraft:attack": { "damage": 1 }
+      },
+      "dm:52": {
+        "minecraft:type_family": { "family": ["parrot", "mob", "morphed"] },
+        "minecraft:collision_box": { "width": 0.5, "height": 0.9 },
+        "minecraft:health": { "value": 6, "max": 6 },
+        "minecraft:movement": { "value": 0.1 },
+        "minecraft:attack": { "damage": 1 },
+        "minecraft:damage_sensor": { "triggers": { "on_damage": { "filters": { "test": "has_damage", "subject": "self", "operator": "equals", "value": "fall" } }, "deals_damage": false } }
+      },
+      "dm:53": {
+        "minecraft:type_family": { "family": ["parrot", "mob", "morphed"] },
+        "minecraft:collision_box": { "width": 0.5, "height": 0.9 },
+        "minecraft:health": { "value": 6, "max": 6 },
+        "minecraft:movement": { "value": 0.1 },
+        "minecraft:attack": { "damage": 1 },
+        "minecraft:damage_sensor": { "triggers": { "on_damage": { "filters": { "test": "has_damage", "subject": "self", "operator": "equals", "value": "fall" } }, "deals_damage": false } }
+      },
+      "dm:54": {
+        "minecraft:type_family": { "family": ["parrot", "mob", "morphed"] },
+        "minecraft:collision_box": { "width": 0.5, "height": 0.9 },
+        "minecraft:health": { "value": 6, "max": 6 },
+        "minecraft:movement": { "value": 0.1 },
+        "minecraft:attack": { "damage": 1 },
+        "minecraft:damage_sensor": { "triggers": { "on_damage": { "filters": { "test": "has_damage", "subject": "self", "operator": "equals", "value": "fall" } }, "deals_damage": false } }
+      },
+      "dm:55": {
+        "minecraft:type_family": { "family": ["turtle", "mob", "morphed"] },
+        "minecraft:collision_box": { "width": 1.2, "height": 0.4 },
+        "minecraft:health": { "value": 30, "max": 30 },
+        "minecraft:movement": { "value": 0.07 },
+        "minecraft:attack": { "damage": 1 },
+        "minecraft:breathable": { "total_supply": 15, "suffocate_time": 0, "breathes_water": true }
+      },
+      "dm:56": {
+        "minecraft:type_family": { "family": ["squid", "mob", "morphed"] },
+        "minecraft:collision_box": { "width": 0.8, "height": 0.8 },
+        "minecraft:health": { "value": 10, "max": 10 },
+        "minecraft:movement": { "value": 0.1 },
+        "minecraft:attack": { "damage": 1 },
+        "minecraft:breathable": { "total_supply": 15, "suffocate_time": 0, "breathes_water": true }
+      },
+      "dm:57": {
+        "minecraft:type_family": { "family": ["squid", "mob", "morphed"] },
+        "minecraft:collision_box": { "width": 0.8, "height": 0.8 },
+        "minecraft:health": { "value": 10, "max": 10 },
+        "minecraft:movement": { "value": 0.1 },
+        "minecraft:attack": { "damage": 1 },
+        "minecraft:breathable": { "total_supply": 15, "suffocate_time": 0, "breathes_water": true }
+      },
+      "dm:58": {
+        "minecraft:type_family": { "family": ["dolphin", "mob", "morphed"] },
+        "minecraft:collision_box": { "width": 0.9, "height": 0.6 },
+        "minecraft:health": { "value": 10, "max": 10 },
+        "minecraft:movement": { "value": 0.15 },
+        "minecraft:attack": { "damage": 2 },
+        "minecraft:breathable": { "total_supply": 15, "suffocate_time": 0, "breathes_water": true }
+      },
+      "dm:59": {
+        "minecraft:type_family": { "family": ["fish", "mob", "morphed"] },
+        "minecraft:collision_box": { "width": 0.5, "height": 0.3 },
+        "minecraft:health": { "value": 3, "max": 3 },
+        "minecraft:movement": { "value": 0.1 },
+        "minecraft:attack": { "damage": 0 },
+        "minecraft:breathable": { "total_supply": 15, "suffocate_time": 0, "breathes_water": true }
+      },
+      "dm:60": {
+        "minecraft:type_family": { "family": ["fish", "mob", "morphed"] },
+        "minecraft:collision_box": { "width": 0.5, "height": 0.3 },
+        "minecraft:health": { "value": 3, "max": 3 },
+        "minecraft:movement": { "value": 0.1 },
+        "minecraft:attack": { "damage": 0 },
+        "minecraft:breathable": { "total_supply": 15, "suffocate_time": 0, "breathes_water": true }
+      },
+      "dm:61": {
+        "minecraft:type_family": { "family": ["fish", "mob", "morphed"] },
+        "minecraft:collision_box": { "width": 0.7, "height": 0.7 },
+        "minecraft:health": { "value": 3, "max": 3 },
+        "minecraft:movement": { "value": 0.1 },
+        "minecraft:attack": { "damage": 1 },
+        "minecraft:breathable": { "total_supply": 15, "suffocate_time": 0, "breathes_water": true }
+      },
+      "dm:62": {
+        "minecraft:type_family": { "family": ["fish", "mob", "morphed"] },
+        "minecraft:collision_box": { "width": 0.5, "height": 0.3 },
+        "minecraft:health": { "value": 3, "max": 3 },
+        "minecraft:movement": { "value": 0.12 },
+        "minecraft:attack": { "damage": 0 },
+        "minecraft:breathable": { "total_supply": 15, "suffocate_time": 0, "breathes_water": true }
+      },
+      "dm:63": {
+        "minecraft:type_family": { "family": ["fish", "mob", "morphed"] },
+        "minecraft:collision_box": { "width": 0.5, "height": 0.3 },
+        "minecraft:health": { "value": 3, "max": 3 },
+        "minecraft:movement": { "value": 0.12 },
+        "minecraft:attack": { "damage": 0 },
+        "minecraft:breathable": { "total_supply": 15, "suffocate_time": 0, "breathes_water": true }
+      },
+      "dm:64": {
+        "minecraft:type_family": { "family": ["fish", "mob", "morphed"] },
+        "minecraft:collision_box": { "width": 0.5, "height": 0.3 },
+        "minecraft:health": { "value": 3, "max": 3 },
+        "minecraft:movement": { "value": 0.12 },
+        "minecraft:attack": { "damage": 0 },
+        "minecraft:breathable": { "total_supply": 15, "suffocate_time": 0, "breathes_water": true }
+      },
+      "dm:65": {
+        "minecraft:type_family": { "family": ["axolotl", "mob", "morphed"] },
+        "minecraft:collision_box": { "width": 0.75, "height": 0.42 },
+        "minecraft:health": { "value": 14, "max": 14 },
+        "minecraft:movement": { "value": 0.1 },
+        "minecraft:attack": { "damage": 2 },
+        "minecraft:breathable": { "total_supply": 15, "suffocate_time": 0, "breathes_water": true }
+      },
+      "dm:66": {
+        "minecraft:type_family": { "family": ["axolotl", "mob", "morphed"] },
+        "minecraft:collision_box": { "width": 0.75, "height": 0.42 },
+        "minecraft:health": { "value": 14, "max": 14 },
+        "minecraft:movement": { "value": 0.1 },
+        "minecraft:attack": { "damage": 2 },
+        "minecraft:breathable": { "total_supply": 15, "suffocate_time": 0, "breathes_water": true }
+      },
+      "dm:67": {
+        "minecraft:type_family": { "family": ["axolotl", "mob", "morphed"] },
+        "minecraft:collision_box": { "width": 0.75, "height": 0.42 },
+        "minecraft:health": { "value": 14, "max": 14 },
+        "minecraft:movement": { "value": 0.1 },
+        "minecraft:attack": { "damage": 2 },
+        "minecraft:breathable": { "total_supply": 15, "suffocate_time": 0, "breathes_water": true }
+      },
+      "dm:68": {
+        "minecraft:type_family": { "family": ["frog", "mob", "morphed"] },
+        "minecraft:collision_box": { "width": 0.5, "height": 0.5 },
+        "minecraft:health": { "value": 10, "max": 10 },
+        "minecraft:movement": { "value": 0.1 },
+        "minecraft:attack": { "damage": 1 },
+        "minecraft:breathable": { "total_supply": 15, "suffocate_time": 0, "breathes_water": true }
+      },
+      "dm:69": {
+        "minecraft:type_family": { "family": ["frog", "mob", "morphed"] },
+        "minecraft:collision_box": { "width": 0.5, "height": 0.5 },
+        "minecraft:health": { "value": 10, "max": 10 },
+        "minecraft:movement": { "value": 0.1 },
+        "minecraft:attack": { "damage": 1 },
+        "minecraft:breathable": { "total_supply": 15, "suffocate_time": 0, "breathes_water": true }
+      },
+      "dm:70": {
+        "minecraft:type_family": { "family": ["frog", "mob", "morphed"] },
+        "minecraft:collision_box": { "width": 0.5, "height": 0.5 },
+        "minecraft:health": { "value": 10, "max": 10 },
+        "minecraft:movement": { "value": 0.1 },
+        "minecraft:attack": { "damage": 1 },
+        "minecraft:breathable": { "total_supply": 15, "suffocate_time": 0, "breathes_water": true }
+      },
+      "dm:71": {
+        "minecraft:type_family": { "family": ["tadpole", "mob", "morphed"] },
+        "minecraft:collision_box": { "width": 0.4, "height": 0.3 },
+        "minecraft:health": { "value": 6, "max": 6 },
+        "minecraft:movement": { "value": 0.1 },
+        "minecraft:attack": { "damage": 0 },
+        "minecraft:breathable": { "total_supply": 15, "suffocate_time": 0, "breathes_water": true }
+      },
+      "dm:72": {
+        "minecraft:type_family": { "family": ["sniffer", "mob", "morphed"] },
+        "minecraft:collision_box": { "width": 1.9, "height": 1.75 },
+        "minecraft:health": { "value": 14, "max": 14 },
+        "minecraft:movement": { "value": 0.08 },
+        "minecraft:attack": { "damage": 1 }
+      },
+      "dm:73": {
+        "minecraft:type_family": { "family": ["armadillo", "mob", "morphed"] },
+        "minecraft:collision_box": { "width": 0.7, "height": 0.65 },
+        "minecraft:health": { "value": 12, "max": 12 },
+        "minecraft:movement": { "value": 0.1 },
+        "minecraft:attack": { "damage": 1 }
+      },
+      "dm:74": {
+        "minecraft:type_family": { "family": ["camel", "mob", "morphed"] },
+        "minecraft:collision_box": { "width": 1.7, "height": 2.3 },
+        "minecraft:health": { "value": 32, "max": 32 },
+        "minecraft:movement": { "value": 0.1 },
+        "minecraft:attack": { "damage": 1 }
+      },
+      "dm:75": {
+        "minecraft:type_family": { "family": ["allay", "mob", "morphed"] },
+        "minecraft:collision_box": { "width": 0.35, "height": 0.6 },
+        "minecraft:health": { "value": 20, "max": 20 },
+        "minecraft:movement": { "value": 0.1 },
+        "minecraft:attack": { "damage": 1 }
+      },
+      "dm:76": {
+        "minecraft:type_family": { "family": ["goat", "mob", "morphed"] },
+        "minecraft:collision_box": { "width": 0.9, "height": 1.3 },
+        "minecraft:health": { "value": 10, "max": 10 },
+        "minecraft:movement": { "value": 0.1 },
+        "minecraft:attack": { "damage": 2 }
+      },
+      "dm:77": {
+        "minecraft:type_family": { "family": ["panda", "mob", "morphed"] },
+        "minecraft:collision_box": { "width": 1.3, "height": 1.25 },
+        "minecraft:health": { "value": 20, "max": 20 },
+        "minecraft:movement": { "value": 0.08 },
+        "minecraft:attack": { "damage": 1 }
+      },
+      "dm:78": {
+        "minecraft:type_family": { "family": ["panda", "mob", "morphed"] },
+        "minecraft:collision_box": { "width": 1.3, "height": 1.25 },
+        "minecraft:health": { "value": 20, "max": 20 },
+        "minecraft:movement": { "value": 0.08 },
+        "minecraft:attack": { "damage": 1 }
+      },
+      "dm:79": {
+        "minecraft:type_family": { "family": ["panda", "mob", "morphed"] },
+        "minecraft:collision_box": { "width": 1.3, "height": 1.25 },
+        "minecraft:health": { "value": 20, "max": 20 },
+        "minecraft:movement": { "value": 0.08 },
+        "minecraft:attack": { "damage": 1 }
+      },
+      "dm:80": {
+        "minecraft:type_family": { "family": ["llama", "mob", "morphed"] },
+        "minecraft:collision_box": { "width": 0.9, "height": 1.87 },
+        "minecraft:health": { "value": 15, "max": 15 },
+        "minecraft:movement": { "value": 0.1 },
+        "minecraft:attack": { "damage": 1 }
+      },
+      "dm:81": {
+        "minecraft:type_family": { "family": ["llama", "mob", "morphed"] },
+        "minecraft:collision_box": { "width": 0.9, "height": 1.87 },
+        "minecraft:health": { "value": 15, "max": 15 },
+        "minecraft:movement": { "value": 0.1 },
+        "minecraft:attack": { "damage": 1 }
+      },
+      "dm:82": {
+        "minecraft:type_family": { "family": ["llama", "mob", "morphed"] },
+        "minecraft:collision_box": { "width": 0.9, "height": 1.87 },
+        "minecraft:health": { "value": 15, "max": 15 },
+        "minecraft:movement": { "value": 0.1 },
+        "minecraft:attack": { "damage": 1 }
+      },
+      "dm:83": {
+        "minecraft:type_family": { "family": ["llama", "trader_llama", "mob", "morphed"] },
+        "minecraft:collision_box": { "width": 0.9, "height": 1.87 },
+        "minecraft:health": { "value": 15, "max": 15 },
+        "minecraft:movement": { "value": 0.1 },
+        "minecraft:attack": { "damage": 1 }
+      },
+      "dm:84": {
+        "minecraft:type_family": { "family": ["wolf", "mob", "morphed"] },
+        "minecraft:collision_box": { "width": 0.6, "height": 0.85 },
+        "minecraft:health": { "value": 20, "max": 20 },
+        "minecraft:movement": { "value": 0.12 },
+        "minecraft:attack": { "damage": 3 }
+      },
+      "dm:85": {
+        "minecraft:type_family": { "family": ["bee", "mob", "morphed"] },
+        "minecraft:collision_box": { "width": 0.55, "height": 0.55 },
+        "minecraft:health": { "value": 10, "max": 10 },
+        "minecraft:movement": { "value": 0.1 },
+        "minecraft:attack": { "damage": 2 },
+        "minecraft:damage_sensor": { "triggers": { "on_damage": { "filters": { "test": "has_damage", "subject": "self", "operator": "equals", "value": "fall" } }, "deals_damage": false } }
+      },
+      "dm:86": {
+        "minecraft:type_family": { "family": ["fox", "mob", "morphed"] },
+        "minecraft:collision_box": { "width": 0.6, "height": 0.7 },
+        "minecraft:health": { "value": 10, "max": 10 },
+        "minecraft:movement": { "value": 0.12 },
+        "minecraft:attack": { "damage": 2 }
+      },
+      "dm:87": {
+        "minecraft:type_family": { "family": ["fox", "mob", "morphed"] },
+        "minecraft:collision_box": { "width": 0.6, "height": 0.7 },
+        "minecraft:health": { "value": 10, "max": 10 },
+        "minecraft:movement": { "value": 0.12 },
+        "minecraft:attack": { "damage": 2 }
+      },
+      "dm:88": {
+        "minecraft:type_family": { "family": ["polar_bear", "mob", "morphed"] },
+        "minecraft:collision_box": { "width": 1.3, "height": 1.4 },
+        "minecraft:health": { "value": 30, "max": 30 },
+        "minecraft:movement": { "value": 0.1 },
+        "minecraft:attack": { "damage": 4 }
+      },
+      "dm:89": {
+        "minecraft:type_family": { "family": ["piglin", "mob", "morphed"] },
+        "minecraft:collision_box": { "width": 0.6, "height": 1.9 },
+        "minecraft:health": { "value": 16, "max": 16 },
+        "minecraft:movement": { "value": 0.1 },
+        "minecraft:attack": { "damage": 5 },
+        "minecraft:damage_sensor": { "triggers": [{ "cause": "fire", "deals_damage": false }, { "cause": "fire_tick", "deals_damage": false }] }
+      },
+      "dm:90": {
+        "minecraft:type_family": { "family": ["zombie_piglin", "undead", "mob", "morphed"] },
+        "minecraft:collision_box": { "width": 0.6, "height": 1.9 },
+        "minecraft:health": { "value": 20, "max": 20 },
+        "minecraft:movement": { "value": 0.1 },
+        "minecraft:attack": { "damage": 5 },
+        "minecraft:damage_sensor": { "triggers": [{ "cause": "fire", "deals_damage": false }, { "cause": "fire_tick", "deals_damage": false }] }
+      },
+      "dm:91": {
+        "minecraft:type_family": { "family": ["warden", "monster", "mob", "morphed"] },
+        "minecraft:collision_box": { "width": 0.9, "height": 2.9 },
+        "minecraft:health": { "value": 500, "max": 500 },
+        "minecraft:movement": { "value": 0.1 },
+        "minecraft:attack": { "damage": 30 },
+        "minecraft:damage_sensor": { "triggers": [{ "cause": "all", "deals_damage": true }] }
+      },
+      "dm:92": {
+        "minecraft:type_family": { "family": ["wither", "undead", "boss", "mob", "morphed"] },
+        "minecraft:collision_box": { "width": 0.9, "height": 3.5 },
+        "minecraft:health": { "value": 300, "max": 300 },
+        "minecraft:movement": { "value": 0.1 },
+        "minecraft:attack": { "damage": 8 },
+        "minecraft:damage_sensor": { "triggers": [{ "cause": "fire", "deals_damage": false }, { "cause": "fire_tick", "deals_damage": false }, { "cause": "lava", "deals_damage": false }] }
+      },
+      "dm:93": {
+        "minecraft:type_family": { "family": ["ender_dragon", "boss", "mob", "morphed"] },
+        "minecraft:collision_box": { "width": 2.0, "height": 4.0 },
+        "minecraft:health": { "value": 200, "max": 200 },
+        "minecraft:movement": { "value": 0.1 },
+        "minecraft:attack": { "damage": 10 },
+        "minecraft:damage_sensor": { "triggers": [{ "cause": "fire", "deals_damage": false }, { "cause": "fire_tick", "deals_damage": false }, { "cause": "lava", "deals_damage": false }] }
+      },
+      "dm:94": {
+        "minecraft:type_family": { "family": ["mooshroom", "mob", "morphed"] },
+        "minecraft:collision_box": { "width": 0.9, "height": 1.3 },
+        "minecraft:health": { "value": 10, "max": 10 },
+        "minecraft:movement": { "value": 0.1 },
+        "minecraft:attack": { "damage": 1 }
+      },
+      "dm:95": {
+        "minecraft:type_family": { "family": ["mooshroom", "mob", "morphed"] },
+        "minecraft:collision_box": { "width": 0.9, "height": 1.3 },
+        "minecraft:health": { "value": 10, "max": 10 },
+        "minecraft:movement": { "value": 0.1 },
+        "minecraft:attack": { "damage": 1 }
+      },
+      "dm:96": {
+        "minecraft:type_family": { "family": ["strider", "mob", "morphed"] },
+        "minecraft:collision_box": { "width": 0.9, "height": 1.7 },
+        "minecraft:health": { "value": 20, "max": 20 },
+        "minecraft:movement": { "value": 0.1 },
+        "minecraft:attack": { "damage": 1 },
+        "minecraft:damage_sensor": { "triggers": [{ "cause": "fire", "deals_damage": false }, { "cause": "fire_tick", "deals_damage": false }, { "cause": "lava", "deals_damage": false }] }
+      },
+      "dm:97": {
+        "minecraft:type_family": { "family": ["wandering_trader", "mob", "morphed"] },
+        "minecraft:collision_box": { "width": 0.6, "height": 1.9 },
+        "minecraft:health": { "value": 20, "max": 20 },
+        "minecraft:movement": { "value": 0.1 },
+        "minecraft:attack": { "damage": 1 }
+      },
+      "dm:98": {
+        "minecraft:type_family": { "family": ["villager", "mob", "morphed"] },
+        "minecraft:collision_box": { "width": 0.6, "height": 1.9 },
+        "minecraft:health": { "value": 20, "max": 20 },
+        "minecraft:movement": { "value": 0.1 },
+        "minecraft:attack": { "damage": 1 }
+      },
+      "dm:99": {
+        "minecraft:type_family": { "family": ["villager", "mob", "morphed"] },
+        "minecraft:collision_box": { "width": 0.6, "height": 1.9 },
+        "minecraft:health": { "value": 20, "max": 20 },
+        "minecraft:movement": { "value": 0.1 },
+        "minecraft:attack": { "damage": 1 }
+      },
+      "dm:100": {
+        "minecraft:type_family": { "family": ["villager", "mob", "morphed"] },
+        "minecraft:collision_box": { "width": 0.6, "height": 1.9 },
+        "minecraft:health": { "value": 20, "max": 20 },
+        "minecraft:movement": { "value": 0.1 },
+        "minecraft:attack": { "damage": 1 }
+      },
+      "dm:101": {
+        "minecraft:type_family": { "family": ["villager", "mob", "morphed"] },
+        "minecraft:collision_box": { "width": 0.6, "height": 1.9 },
+        "minecraft:health": { "value": 20, "max": 20 },
+        "minecraft:movement": { "value": 0.1 },
+        "minecraft:attack": { "damage": 1 }
+      },
+      "dm:102": {
+        "minecraft:type_family": { "family": ["villager", "mob", "morphed"] },
+        "minecraft:collision_box": { "width": 0.6, "height": 1.9 },
+        "minecraft:health": { "value": 20, "max": 20 },
+        "minecraft:movement": { "value": 0.1 },
+        "minecraft:attack": { "damage": 1 }
+      },
+      "dm:103": {
+        "minecraft:type_family": { "family": ["villager", "mob", "morphed"] },
+        "minecraft:collision_box": { "width": 0.6, "height": 1.9 },
+        "minecraft:health": { "value": 20, "max": 20 },
+        "minecraft:movement": { "value": 0.1 },
+        "minecraft:attack": { "damage": 1 }
+      },
+      "dm:104": {
+        "minecraft:type_family": { "family": ["villager", "mob", "morphed"] },
+        "minecraft:collision_box": { "width": 0.6, "height": 1.9 },
+        "minecraft:health": { "value": 20, "max": 20 },
+        "minecraft:movement": { "value": 0.1 },
+        "minecraft:attack": { "damage": 1 }
+      },
+      "dm:105": {
+        "minecraft:type_family": { "family": ["iron_golem", "mob", "morphed"] },
+        "minecraft:collision_box": { "width": 1.4, "height": 2.7 },
+        "minecraft:health": { "value": 100, "max": 100 },
+        "minecraft:movement": { "value": 0.08 },
+        "minecraft:attack": { "damage": 7 },
+        "minecraft:damage_sensor": { "triggers": [{ "cause": "drowning", "deals_damage": false }] }
+      },
+      "dm:106": {
+        "minecraft:type_family": { "family": ["snow_golem", "mob", "morphed"] },
+        "minecraft:collision_box": { "width": 0.7, "height": 1.9 },
+        "minecraft:health": { "value": 4, "max": 4 },
+        "minecraft:movement": { "value": 0.08 },
+        "minecraft:attack": { "damage": 1 },
+        "minecraft:damage_sensor": { "triggers": [{ "cause": "drowning", "deals_damage": false }] }
+      }
+    },
+    "events": {
+      "dm:clear": {
+        "remove": {
+          "component_groups": [
+            "dm:human", "dm:1", "dm:2", "dm:3", "dm:4", "dm:5", "dm:6", "dm:7", "dm:8", "dm:9",
+            "dm:10", "dm:11", "dm:12", "dm:13", "dm:14", "dm:15", "dm:16", "dm:17", "dm:18", "dm:19",
+            "dm:20", "dm:21", "dm:22", "dm:23", "dm:24", "dm:25", "dm:26", "dm:27", "dm:28", "dm:29",
+            "dm:30", "dm:31", "dm:32", "dm:33", "dm:34", "dm:35", "dm:36", "dm:37", "dm:38", "dm:39",
+            "dm:40", "dm:41", "dm:42", "dm:43", "dm:44", "dm:45", "dm:46", "dm:47", "dm:48", "dm:49",
+            "dm:50", "dm:51", "dm:52", "dm:53", "dm:54", "dm:55", "dm:56", "dm:57", "dm:58", "dm:59",
+            "dm:60", "dm:61", "dm:62", "dm:63", "dm:64", "dm:65", "dm:66", "dm:67", "dm:68", "dm:69",
+            "dm:70", "dm:71", "dm:72", "dm:73", "dm:74", "dm:75", "dm:76", "dm:77", "dm:78", "dm:79",
+            "dm:80", "dm:81", "dm:82", "dm:83", "dm:84", "dm:85", "dm:86", "dm:87", "dm:88", "dm:89",
+            "dm:90", "dm:91", "dm:92", "dm:93", "dm:94", "dm:95", "dm:96", "dm:97", "dm:98", "dm:99",
+            "dm:100", "dm:101", "dm:102", "dm:103", "dm:104", "dm:105", "dm:106"
+          ]
+        }
+      },
+      "dm:human": { "add": { "component_groups": ["dm:human"] } },
+      "dm:1": { "add": { "component_groups": ["dm:1"] }, "trigger": "dm:clear" },
+      "dm:2": { "add": { "component_groups": ["dm:2"] }, "trigger": "dm:clear" },
+      "dm:3": { "add": { "component_groups": ["dm:3"] }, "trigger": "dm:clear" },
+      "dm:4": { "add": { "component_groups": ["dm:4"] }, "trigger": "dm:clear" },
+      "dm:5": { "add": { "component_groups": ["dm:5"] }, "trigger": "dm:clear" },
+      "dm:6": { "add": { "component_groups": ["dm:6"] }, "trigger": "dm:clear" },
+      "dm:7": { "add": { "component_groups": ["dm:7"] }, "trigger": "dm:clear" },
+      "dm:8": { "add": { "component_groups": ["dm:8"] }, "trigger": "dm:clear" },
+      "dm:9": { "add": { "component_groups": ["dm:9"] }, "trigger": "dm:clear" },
+      "dm:10": { "add": { "component_groups": ["dm:10"] }, "trigger": "dm:clear" },
+      "dm:11": { "add": { "component_groups": ["dm:11"] }, "trigger": "dm:clear" },
+      "dm:12": { "add": { "component_groups": ["dm:12"] }, "trigger": "dm:clear" },
+      "dm:13": { "add": { "component_groups": ["dm:13"] }, "trigger": "dm:clear" },
+      "dm:14": { "add": { "component_groups": ["dm:14"] }, "trigger": "dm:clear" },
+      "dm:15": { "add": { "component_groups": ["dm:15"] }, "trigger": "dm:clear" },
+      "dm:16": { "add": { "component_groups": ["dm:16"] }, "trigger": "dm:clear" },
+      "dm:17": { "add": { "component_groups": ["dm:17"] }, "trigger": "dm:clear" },
+      "dm:18": { "add": { "component_groups": ["dm:18"] }, "trigger": "dm:clear" },
+      "dm:19": { "add": { "component_groups": ["dm:19"] }, "trigger": "dm:clear" },
+      "dm:20": { "add": { "component_groups": ["dm:20"] }, "trigger": "dm:clear" },
+      "dm:21": { "add": { "component_groups": ["dm:21"] }, "trigger": "dm:clear" },
+      "dm:22": { "add": { "component_groups": ["dm:22"] }, "trigger": "dm:clear" },
+      "dm:23": { "add": { "component_groups": ["dm:23"] }, "trigger": "dm:clear" },
+      "dm:24": { "add": { "component_groups": ["dm:24"] }, "trigger": "dm:clear" },
+      "dm:25": { "add": { "component_groups": ["dm:25"] }, "trigger": "dm:clear" },
+      "dm:26": { "add": { "component_groups": ["dm:26"] }, "trigger": "dm:clear" },
+      "dm:27": { "add": { "component_groups": ["dm:27"] }, "trigger": "dm:clear" },
+      "dm:28": { "add": { "component_groups": ["dm:28"] }, "trigger": "dm:clear" },
+      "dm:29": { "add": { "component_groups": ["dm:29"] }, "trigger": "dm:clear" },
+      "dm:30": { "add": { "component_groups": ["dm:30"] }, "trigger": "dm:clear" },
+      "dm:31": { "add": { "component_groups": ["dm:31"] }, "trigger": "dm:clear" },
+      "dm:32": { "add": { "component_groups": ["dm:32"] }, "trigger": "dm:clear" },
+      "dm:33": { "add": { "component_groups": ["dm:33"] }, "trigger": "dm:clear" },
+      "dm:34": { "add": { "component_groups": ["dm:34"] }, "trigger": "dm:clear" },
+      "dm:35": { "add": { "component_groups": ["dm:35"] }, "trigger": "dm:clear" },
+      "dm:36": { "add": { "component_groups": ["dm:36"] }, "trigger": "dm:clear" },
+      "dm:37": { "add": { "component_groups": ["dm:37"] }, "trigger": "dm:clear" },
+      "dm:38": { "add": { "component_groups": ["dm:38"] }, "trigger": "dm:clear" },
+      "dm:39": { "add": { "component_groups": ["dm:39"] }, "trigger": "dm:clear" },
+      "dm:40": { "add": { "component_groups": ["dm:40"] }, "trigger": "dm:clear" },
+      "dm:41": { "add": { "component_groups": ["dm:41"] }, "trigger": "dm:clear" },
+      "dm:42": { "add": { "component_groups": ["dm:42"] }, "trigger": "dm:clear" },
+      "dm:43": { "add": { "component_groups": ["dm:43"] }, "trigger": "dm:clear" },
+      "dm:44": { "add": { "component_groups": ["dm:44"] }, "trigger": "dm:clear" },
+      "dm:45": { "add": { "component_groups": ["dm:45"] }, "trigger": "dm:clear" },
+      "dm:46": { "add": { "component_groups": ["dm:46"] }, "trigger": "dm:clear" },
+      "dm:47": { "add": { "component_groups": ["dm:47"] }, "trigger": "dm:clear" },
+      "dm:48": { "add": { "component_groups": ["dm:48"] }, "trigger": "dm:clear" },
+      "dm:49": { "add": { "component_groups": ["dm:49"] }, "trigger": "dm:clear" },
+      "dm:50": { "add": { "component_groups": ["dm:50"] }, "trigger": "dm:clear" },
+      "dm:51": { "add": { "component_groups": ["dm:51"] }, "trigger": "dm:clear" },
+      "dm:52": { "add": { "component_groups": ["dm:52"] }, "trigger": "dm:clear" },
+      "dm:53": { "add": { "component_groups": ["dm:53"] }, "trigger": "dm:clear" },
+      "dm:54": { "add": { "component_groups": ["dm:54"] }, "trigger": "dm:clear" },
+      "dm:55": { "add": { "component_groups": ["dm:55"] }, "trigger": "dm:clear" },
+      "dm:56": { "add": { "component_groups": ["dm:56"] }, "trigger": "dm:clear" },
+      "dm:57": { "add": { "component_groups": ["dm:57"] }, "trigger": "dm:clear" },
+      "dm:58": { "add": { "component_groups": ["dm:58"] }, "trigger": "dm:clear" },
+      "dm:59": { "add": { "component_groups": ["dm:59"] }, "trigger": "dm:clear" },
+      "dm:60": { "add": { "component_groups": ["dm:60"] }, "trigger": "dm:clear" },
+      "dm:61": { "add": { "component_groups": ["dm:61"] }, "trigger": "dm:clear" },
+      "dm:62": { "add": { "component_groups": ["dm:62"] }, "trigger": "dm:clear" },
+      "dm:63": { "add": { "component_groups": ["dm:63"] }, "trigger": "dm:clear" },
+      "dm:64": { "add": { "component_groups": ["dm:64"] }, "trigger": "dm:clear" },
+      "dm:65": { "add": { "component_groups": ["dm:65"] }, "trigger": "dm:clear" },
+      "dm:66": { "add": { "component_groups": ["dm:66"] }, "trigger": "dm:clear" },
+      "dm:67": { "add": { "component_groups": ["dm:67"] }, "trigger": "dm:clear" },
+      "dm:68": { "add": { "component_groups": ["dm:68"] }, "trigger": "dm:clear" },
+      "dm:69": { "add": { "component_groups": ["dm:69"] }, "trigger": "dm:clear" },
+      "dm:70": { "add": { "component_groups": ["dm:70"] }, "trigger": "dm:clear" },
+      "dm:71": { "add": { "component_groups": ["dm:71"] }, "trigger": "dm:clear" },
+      "dm:72": { "add": { "component_groups": ["dm:72"] }, "trigger": "dm:clear" },
+      "dm:73": { "add": { "component_groups": ["dm:73"] }, "trigger": "dm:clear" },
+      "dm:74": { "add": { "component_groups": ["dm:74"] }, "trigger": "dm:clear" },
+      "dm:75": { "add": { "component_groups": ["dm:75"] }, "trigger": "dm:clear" },
+      "dm:76": { "add": { "component_groups": ["dm:76"] }, "trigger": "dm:clear" },
+      "dm:77": { "add": { "component_groups": ["dm:77"] }, "trigger": "dm:clear" },
+      "dm:78": { "add": { "component_groups": ["dm:78"] }, "trigger": "dm:clear" },
+      "dm:79": { "add": { "component_groups": ["dm:79"] }, "trigger": "dm:clear" },
+      "dm:80": { "add": { "component_groups": ["dm:80"] }, "trigger": "dm:clear" },
+      "dm:81": { "add": { "component_groups": ["dm:81"] }, "trigger": "dm:clear" },
+      "dm:82": { "add": { "component_groups": ["dm:82"] }, "trigger": "dm:clear" },
+      "dm:83": { "add": { "component_groups": ["dm:83"] }, "trigger": "dm:clear" },
+      "dm:84": { "add": { "component_groups": ["dm:84"] }, "trigger": "dm:clear" },
+      "dm:85": { "add": { "component_groups": ["dm:85"] }, "trigger": "dm:clear" },
+      "dm:86": { "add": { "component_groups": ["dm:86"] }, "trigger": "dm:clear" },
+      "dm:87": { "add": { "component_groups": ["dm:87"] }, "trigger": "dm:clear" },
+      "dm:88": { "add": { "component_groups": ["dm:88"] }, "trigger": "dm:clear" },
+      "dm:89": { "add": { "component_groups": ["dm:89"] }, "trigger": "dm:clear" },
+      "dm:90": { "add": { "component_groups": ["dm:90"] }, "trigger": "dm:clear" },
+      "dm:91": { "add": { "component_groups": ["dm:91"] }, "trigger": "dm:clear" },
+      "dm:92": { "add": { "component_groups": ["dm:92"] }, "trigger": "dm:clear" },
+      "dm:93": { "add": { "component_groups": ["dm:93"] }, "trigger": "dm:clear" },
+      "dm:94": { "add": { "component_groups": ["dm:94"] }, "trigger": "dm:clear" },
+      "dm:95": { "add": { "component_groups": ["dm:95"] }, "trigger": "dm:clear" },
+      "dm:96": { "add": { "component_groups": ["dm:96"] }, "trigger": "dm:clear" },
+      "dm:97": { "add": { "component_groups": ["dm:97"] }, "trigger": "dm:clear" },
+      "dm:98": { "add": { "component_groups": ["dm:98"] }, "trigger": "dm:clear" },
+      "dm:99": { "add": { "component_groups": ["dm:99"] }, "trigger": "dm:clear" },
+      "dm:100": { "add": { "component_groups": ["dm:100"] }, "trigger": "dm:clear" },
+      "dm:101": { "add": { "component_groups": ["dm:101"] }, "trigger": "dm:clear" },
+      "dm:102": { "add": { "component_groups": ["dm:102"] }, "trigger": "dm:clear" },
+      "dm:103": { "add": { "component_groups": ["dm:103"] }, "trigger": "dm:clear" },
+      "dm:104": { "add": { "component_groups": ["dm:104"] }, "trigger": "dm:clear" },
+      "dm:105": { "add": { "component_groups": ["dm:105"] }, "trigger": "dm:clear" },
+      "dm:106": { "add": { "component_groups": ["dm:106"] }, "trigger": "dm:clear" }
+    }
+  }
+}
