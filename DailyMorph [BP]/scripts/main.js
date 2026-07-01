@@ -3,61 +3,100 @@ import { world, system } from "@minecraft/server";
 const MORPH_COUNT = 106;
 const FIRST_MORPH = 1;
 const FORCE_INTERVAL = 100;
-const DAY_LENGTH = 24000;
-const MARGIN = 5;
 
 const MORPH_NAMES = {
-  0: "Humano",
-  1: "Zombie", 2: "Skeleton", 3: "Creeper", 4: "Spider", 5: "Cave Spider",
-  6: "Enderman", 7: "Witch", 8: "Blaze", 9: "Ghast", 10: "Magma Cube",
-  11: "Silverfish", 12: "Slime", 13: "Drowned", 14: "Husk", 15: "Stray",
-  16: "Bogged", 17: "Phantom", 18: "Pillager", 19: "Evoker", 20: "Vindicator",
-  21: "Ravager", 22: "Vex", 23: "Guardian", 24: "Elder Guardian", 25: "Shulker",
-  26: "Wither Skeleton", 27: "Zoglin", 28: "Piglin Brute", 29: "Hoglin",
-  30: "Breeze", 31: "Creaking", 32: "Chicken", 33: "Cow", 34: "Pig",
-  35: "Sheep", 36: "Black Sheep", 37: "Brown Sheep", 38: "White Rabbit",
-  39: "Black Rabbit", 40: "Gold Rabbit", 41: "White Horse", 42: "Black Horse",
-  43: "Brown Horse", 44: "Donkey", 45: "Mule", 46: "Skeleton Horse",
-  47: "Zombie Horse", 48: "Black Cat", 49: "Red Cat", 50: "Siamese Cat",
-  51: "Ocelot", 52: "Red Parrot", 53: "Blue Parrot", 54: "Green Parrot",
-  55: "Turtle", 56: "Squid", 57: "Glow Squid", 58: "Dolphin", 59: "Cod",
-  60: "Salmon", 61: "Pufferfish", 62: "Tropical Fish", 63: "Clownfish",
-  64: "Angelfish", 65: "Pink Axolotl", 66: "Gold Axolotl", 67: "Blue Axolotl",
-  68: "Frog", 69: "Cold Frog", 70: "Warm Frog", 71: "Tadpole",
-  72: "Sniffer", 73: "Armadillo", 74: "Camel", 75: "Allay", 76: "Goat",
-  77: "Panda", 78: "Brown Panda", 79: "Playful Panda", 80: "White Llama",
-  81: "Brown Llama", 82: "Creamy Llama", 83: "Trader Llama", 84: "Wolf",
-  85: "Bee", 86: "Red Fox", 87: "Snow Fox", 88: "Polar Bear",
-  89: "Piglin", 90: "Zombie Piglin", 91: "Warden", 92: "Wither",
-  93: "Ender Dragon", 94: "Red Mooshroom", 95: "Brown Mooshroom",
-  96: "Strider", 97: "Wandering Trader", 98: "Plains Villager",
-  99: "Desert Villager", 100: "Savanna Villager", 101: "Taiga Villager",
-  102: "Snow Villager", 103: "Jungle Villager", 104: "Swamp Villager",
-  105: "Iron Golem", 106: "Snow Golem"
+  0: "§fHumano",
+  1: "§2Zombie", 2: "§7Skeleton", 3: "§aCreeper", 4: "§8Spider", 5: "§8Cave Spider",
+  6: "§5Enderman", 7: "§dWitch", 8: "§6Blaze", 9: "§fGhast", 10: "§4Magma Cube",
+  11: "§7Silverfish", 12: "§aSlime", 13: "§2Drowned", 14: "§6Husk", 15: "§bStray",
+  16: "§2Bogged", 17: "§7Phantom", 18: "§8Pillager", 19: "§5Evoker", 20: "§5Vindicator",
+  21: "§cRavager", 22: "§bVex", 23: "§3Guardian", 24: "§3Elder Guardian", 25: "§dShulker",
+  26: "§8Wither Skeleton", 27: "§cZoglin", 28: "§6Piglin Brute", 29: "§cHoglin",
+  30: "§bBreeze", 31: "§2Creaking", 32: "§eChicken", 33: "§6Cow", 34: "§dPig",
+  35: "§fSheep", 36: "§8Black Sheep", 37: "§6Brown Sheep", 38: "§fWhite Rabbit",
+  39: "§8Black Rabbit", 40: "§eGold Rabbit", 41: "§fWhite Horse", 42: "§8Black Horse",
+  43: "§6Brown Horse", 44: "§7Donkey", 45: "§7Mule", 46: "§7Skeleton Horse",
+  47: "§2Zombie Horse", 48: "§8Black Cat", 49: "§6Red Cat", 50: "§bSiamese Cat",
+  51: "§eOcelot", 52: "§cRed Parrot", 53: "§9Blue Parrot", 54: "§aGreen Parrot",
+  55: "§2Turtle", 56: "§7Squid", 57: "§bGlow Squid", 58: "§9Dolphin", 59: "§7Cod",
+  60: "§cSalmon", 61: "§ePufferfish", 62: "§bTropical Fish", 63: "§dClownfish",
+  64: "§6Angelfish", 65: "§dPink Axolotl", 66: "§eGold Axolotl", 67: "§bBlue Axolotl",
+  68: "§aFrog", 69: "§3Cold Frog", 70: "§6Warm Frog", 71: "§7Tadpole",
+  72: "§7Sniffer", 73: "§6Armadillo", 74: "§eCamel", 75: "§bAllay", 76: "§7Goat",
+  77: "§fPanda", 78: "§6Brown Panda", 79: "§aPlayful Panda", 80: "§fWhite Llama",
+  81: "§6Brown Llama", 82: "§eCreamy Llama", 83: "§eTrader Llama", 84: "§7Wolf",
+  85: "§eBee", 86: "§cRed Fox", 87: "§fSnow Fox", 88: "§6Polar Bear",
+  89: "§6Piglin", 90: "§2Zombie Piglin", 91: "§3Warden", 92: "§8Wither",
+  93: "§5Ender Dragon", 94: "§cRed Mooshroom", 95: "§6Brown Mooshroom",
+  96: "§cStrider", 97: "§eWandering Trader", 98: "§2Plains Villager",
+  99: "§6Desert Villager", 100: "§eSavanna Villager", 101: "§3Taiga Villager",
+  102: "§bSnow Villager", 103: "§aJungle Villager", 104: "§5Swamp Villager",
+  105: "§7Iron Golem", 106: "§fSnow Golem"
 };
 
-system.runInterval(() => {
-  const time = world.getTime();
+function assignRandomMorph(player) {
+  const id = Math.floor(Math.random() * (MORPH_COUNT - FIRST_MORPH + 1)) + FIRST_MORPH;
+  player.setDynamicProperty("dm:morph_id", id);
+  player.setDynamicProperty("dm:last_time", world.getTime());
+  applyMorph(player, id);
+  world.sendMessage(`§6[DM] §e${player.name} §7→ ${MORPH_NAMES[id]}`);
+}
 
-  for (const player of world.getPlayers()) {
-    const dm = player.getDynamicProperty("dm:day");
-    const prevTime = player.getDynamicProperty("dm:last_time");
-
-    if (prevTime === undefined || prevTime === null) {
-      assignRandomMorph(player);
-      continue;
-    }
-
-    const wrapped = time < prevTime;
-    player.setDynamicProperty("dm:last_time", time);
-
-    if (wrapped || dm === undefined || dm === null) {
-      assignRandomMorph(player);
-      player.setDynamicProperty("dm:day", (dm || 0) + 1);
-      world.sendMessage(`§6[DM] §e${player.name} §7→ §a${MORPH_NAMES[player.getDynamicProperty("dm:morph_id")] || "???"}`);
-    }
+function applyMorph(player, id) {
+  if (id === 0 || id === undefined || id === null) {
+    player.setProperty("dm:current_morph", 0);
+    player.triggerEvent("dm:clear");
+    player.triggerEvent("dm:human");
+    player.runCommandAsync("effect @s clear");
+    player.runCommandAsync("playsound random.orb @s");
+    return;
   }
-}, 10);
+  player.setProperty("dm:current_morph", id);
+  player.runCommandAsync("effect @s clear");
+  player.triggerEvent("dm:clear");
+  player.triggerEvent(`dm:${id}`);
+  player.runCommandAsync("particle minecraft:large_explosion ~ ~1 ~");
+  player.runCommandAsync("playsound mob.blaze.hurt @s");
+}
+
+function reapply(player, expectedId) {
+  try {
+    const current = player.getProperty("dm:current_morph");
+    if (current !== expectedId) {
+      player.setProperty("dm:current_morph", expectedId);
+      player.triggerEvent("dm:clear");
+      player.triggerEvent(`dm:${expectedId}`);
+    }
+  } catch(e) {}
+}
+
+world.afterEvents.worldLoad.subscribe(() => {
+  system.runInterval(() => {
+    const time = world.getTime();
+    for (const player of world.getPlayers()) {
+      const dm = player.getDynamicProperty("dm:day");
+      const prevTime = player.getDynamicProperty("dm:last_time");
+      if (prevTime === undefined || prevTime === null) {
+        assignRandomMorph(player);
+        continue;
+      }
+      const wrapped = time < prevTime;
+      player.setDynamicProperty("dm:last_time", time);
+      if (wrapped || dm === undefined || dm === null) {
+        assignRandomMorph(player);
+        player.setDynamicProperty("dm:day", (dm || 0) + 1);
+      }
+    }
+  }, 20);
+
+  system.runInterval(() => {
+    for (const player of world.getPlayers()) {
+      const morphId = player.getDynamicProperty("dm:morph_id");
+      if (morphId === undefined || morphId === null || morphId === 0) continue;
+      reapply(player, morphId);
+    }
+  }, FORCE_INTERVAL);
+});
 
 world.afterEvents.playerSpawn.subscribe((event) => {
   const player = event.player;
@@ -65,50 +104,15 @@ world.afterEvents.playerSpawn.subscribe((event) => {
   const morphId = player.getDynamicProperty("dm:morph_id");
   if (morphId === undefined || morphId === null) {
     assignRandomMorph(player);
-    world.sendMessage(`§6[DM] §e${player.name} §7→ §a${MORPH_NAMES[player.getDynamicProperty("dm:morph_id")] || "???"}`);
   } else {
     applyMorph(player, morphId);
   }
 });
 
-system.runInterval(() => {
-  for (const player of world.getPlayers()) {
-    const morphId = player.getDynamicProperty("dm:morph_id");
-    if (morphId === undefined || morphId === null || morphId === 0) continue;
-    checkAndForce(player, morphId);
-  }
-}, FORCE_INTERVAL);
-
-function assignRandomMorph(player) {
-  const id = Math.floor(Math.random() * (MORPH_COUNT - FIRST_MORPH + 1)) + FIRST_MORPH;
-  player.setDynamicProperty("dm:morph_id", id);
-  player.setDynamicProperty("dm:last_time", world.getTime());
-  applyMorph(player, id);
-}
-
-function applyMorph(player, id) {
-  if (id === 0) {
-    player.triggerEvent("dm:human");
-    player.runCommandAsync("effect @s clear");
-    player.runCommandAsync("replaceitem entity @s slot.armor.head 0 air");
-    return;
-  }
-  player.runCommandAsync("effect @s clear");
-  player.triggerEvent("dm:clear");
-  player.triggerEvent(`dm:${id}`);
-  player.runCommandAsync("replaceitem entity @s slot.armor.head 0 dm:morph_token");
-
-  for (let i = 0; i < 3; i++) {
-    system.runTimeout(() => {
-      try { player.runCommandAsync(`effect @s invisibility 100000 1 true`); } catch(e) {}
-    }, i * 2);
-  }
-}
-
-function checkAndForce(player, expectedId) {
-  try {
-    player.triggerEvent(`dm:${expectedId}`);
-    player.runCommandAsync("replaceitem entity @s slot.armor.head 0 dm:morph_token");
-    player.runCommandAsync("effect @s invisibility 100000 1 true");
-  } catch(e) {}
-}
+world.afterEvents.itemUse.subscribe((event) => {
+  const player = event.source;
+  const item = event.itemStack;
+  if (!item || item.typeId !== "dm:morph_token") return;
+  assignRandomMorph(player);
+  player.runCommandAsync("playsound random.orb @s");
+});

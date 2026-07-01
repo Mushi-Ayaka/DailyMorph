@@ -6,7 +6,10 @@
       "materials": {
         "default": "entity_alphatest",
         "cape": "entity_alphatest",
-        "animated": "player_animated"
+        "animated": "player_animated",
+        "translucent": "entity_alphablend",
+        "emissive": "entity_emissive",
+        "slime": "slime"
       },
       "textures": {
         "default": "textures/entity/player/steve",
@@ -83,14 +86,73 @@
         "dm_snow_golem": "textures/entity/snow_golem/snow_golem"
       },
       "geometry": {
-        "default": "geometry.humanoid.custom"
+        "default": "geometry.humanoid.custom",
+        "dm_zombie": "geometry.zombie",
+        "dm_skeleton": "geometry.skeleton",
+        "dm_creeper": "geometry.creeper",
+        "dm_spider": "geometry.spider",
+        "dm_enderman": "geometry.enderman",
+        "dm_witch": "geometry.witch",
+        "dm_blaze": "geometry.blaze",
+        "dm_ghast": "geometry.ghast",
+        "dm_magma": "geometry.magma_cube",
+        "dm_silverfish": "geometry.silverfish",
+        "dm_slime": "geometry.slime",
+        "dm_phantom": "geometry.phantom",
+        "dm_default": "geometry.humanoid.custom",
+        "dm_ravager": "geometry.ravager",
+        "dm_vex": "geometry.vex",
+        "dm_guardian": "geometry.guardian",
+        "dm_elder": "geometry.elder_guardian",
+        "dm_shulker": "geometry.shulker",
+        "dm_hoglin": "geometry.hoglin",
+        "dm_piglin": "geometry.piglin",
+        "dm_chicken": "geometry.chicken",
+        "dm_cow": "geometry.cow",
+        "dm_pig": "geometry.pig",
+        "dm_sheep": "geometry.sheep",
+        "dm_rabbit": "geometry.rabbit",
+        "dm_horse": "geometry.horse",
+        "dm_donkey": "geometry.donkey",
+        "dm_mule": "geometry.mule",
+        "dm_cat": "geometry.cat",
+        "dm_ocelot": "geometry.ocelot",
+        "dm_parrot": "geometry.parrot",
+        "dm_turtle": "geometry.turtle",
+        "dm_squid": "geometry.squid",
+        "dm_dolphin": "geometry.dolphin",
+        "dm_fish": "geometry.fish",
+        "dm_pufferfish": "geometry.pufferfish",
+        "dm_tropical": "geometry.tropical_fish",
+        "dm_axolotl": "geometry.axolotl",
+        "dm_frog": "geometry.frog",
+        "dm_tadpole": "geometry.tadpole",
+        "dm_sniffer": "geometry.sniffer",
+        "dm_armadillo": "geometry.armadillo",
+        "dm_camel": "geometry.camel",
+        "dm_allay": "geometry.allay",
+        "dm_goat": "geometry.goat",
+        "dm_panda": "geometry.panda",
+        "dm_llama": "geometry.llama",
+        "dm_wolf": "geometry.wolf",
+        "dm_bee": "geometry.bee",
+        "dm_fox": "geometry.fox",
+        "dm_polar_bear": "geometry.polar_bear",
+        "dm_warden": "geometry.warden",
+        "dm_wither": "geometry.wither",
+        "dm_dragon": "geometry.ender_dragon",
+        "dm_strider": "geometry.strider",
+        "dm_iron_golem": "geometry.iron_golem",
+        "dm_snow_golem": "geometry.snow_golem"
       },
       "scripts": {
-        "scale": "1.0",
-        "initialize": ["variable.is_morph_active = 0;"],
+        "scale": "variable.morph_scale",
+        "initialize": [
+          "variable.is_morph_active = 0;"
+        ],
         "pre_animation": [
           "variable.is_morph_active = q.property('dm:current_morph') > 0 ? 1 : 0;",
-          "variable.morph_scale = q.property('dm:current_morph') == 91 ? 2.0 : (q.property('dm:current_morph') == 92 ? 1.5 : (q.property('dm:current_morph') == 93 ? 3.0 : (q.property('dm:current_morph') >= 105 ? 1.4 : 1.0)));"
+          "variable.morph_scale = q.property('dm:current_morph') == 91 ? 2.0 : (q.property('dm:current_morph') == 92 ? 1.5 : (q.property('dm:current_morph') == 93 ? 3.0 : (q.property('dm:current_morph') == 9 ? 3.0 : (q.property('dm:current_morph') == 10 ? 0.6 : (q.property('dm:current_morph') == 12 ? 0.6 : (q.property('dm:current_morph') == 21 ? 1.5 : (q.property('dm:current_morph') == 74 ? 1.5 : (q.property('dm:current_morph') >= 105 ? 1.4 : 1.0))))))));"
         ]
       },
       "animations": {
@@ -99,9 +161,13 @@
         "cape": "animation.player.cape"
       },
       "animation_controllers": [
-        { "general": "controller.animation.player.general" }
+        {
+          "general": "controller.animation.player.general"
+        }
       ],
-      "render_controllers": ["controller.render.player.morph"],
+      "render_controllers": [
+        "controller.render.player.morph"
+      ],
       "enable_attachables": true
     }
   }

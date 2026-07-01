@@ -8,9 +8,8 @@
     "components": {
       "minecraft:icon": { "texture": "dm:morph_token" },
       "minecraft:display_name": { "value": "§dMorph Token" },
-      "minecraft:wearable": { "slot": "slot.armor.head", "protection": 0 },
-      "minecraft:durability": { "max_durability": 0 },
-      "minecraft:repairable": { "repair_items": [] },
+      "minecraft:max_stack_size": 1,
+      "minecraft:hand_equipped": false,
       "minecraft:tags": { "tags": ["dm:morph"] }
     }
   }
