@@ -12,6 +12,18 @@
           "range": [-1, 106],
           "default": -1,
           "client_sync": true
+        },
+        "dm:geom_id": {
+          "type": "int",
+          "range": [0, 57],
+          "default": 0,
+          "client_sync": true
+        },
+        "dm:tex_id": {
+          "type": "int",
+          "range": [0, 71],
+          "default": 0,
+          "client_sync": true
         }
       }
     },
